@@ -55,5 +55,7 @@ Rails.application.routes.draw do
   #   end
   root 'blogs#index'
 
-  resources :blogs
+  resources :blogs do
+    resources :comments
+  end
 end

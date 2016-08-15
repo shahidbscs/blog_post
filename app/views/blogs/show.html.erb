@@ -6,3 +6,10 @@
 	<span><%= link_to 'Delete', blog_path(@blog), method: :delete, data: {confirm: "Are you sure you want to delete this post"} %></span>
 </p>
 <p><%= @blog.description %></p>
+<hr />
+<di id="comments">
+  <%= @blog.comments.count %> Comments
+	<%= render @blog.comments %>
+	<h2>Add comment</h2>
+  <%= render "comments/form" %>
+</di>
