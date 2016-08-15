@@ -4,7 +4,11 @@
 		<%= link_to post.title, post %>
 	</p>
 	<p>
-		<%= post.created_at.strftime("%B, %d, %Y") %>
+		<span>
+			<%= post.created_at.strftime("%B, %d, %Y") %>
+		</span>
+		<span><%= link_to 'Edit', edit_blog_path(post) %></span>
+		<span><%= link_to 'Delete', blog_path(post), method: :delete, data: {confirm: 'Are you sure to delete this post?'} %></span>
 	</p>
 	<p>
 		<%= post.description %>

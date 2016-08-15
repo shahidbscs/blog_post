@@ -4,13 +4,16 @@ class BlogsController < ApplicationController
   end
 
   def new
+    @blog = Blog.new
   end
 
   def create
     @blog = Blog.new(blog_params)
-    @blog.save
-
-    redirect_to @blog
+    if @blog.save
+      redirect_to @blog
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -23,6 +26,19 @@ class BlogsController < ApplicationController
 
   def update
     @blog = Blog.find(params[:id])
+
+    if @blog.update(blog_params)
+      redirect_to blog_path(@blog)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @blog = Blog.find(params[:id])
+    @blog.destroy
+
+    redirect_to blogs_path
   end
 
   private
